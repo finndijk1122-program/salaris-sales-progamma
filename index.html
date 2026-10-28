@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#193c32">
+  <title>Sales & Salaris — jouw maandoverzicht</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="./"><span class="brand-mark">s<span>.</span></span><span>sales<span class="brand-light">&</span>salaris</span></a>
+    <div class="workspace-label">JOUW WERKPLEK</div>
+    <a class="nav-item active" href="#overzicht"><span aria-hidden="true">▦</span> Maandoverzicht <span class="nav-dot"></span></a>
+    <div class="sidebar-bottom"><span class="avatar">JIJ</span><div>Jouw sales, jouw overzicht<small>Elke sale telt.</small></div></div>
+  </aside>
+
+  <div class="main-shell" id="overzicht">
+    <header class="topbar"><span>Werkplek <span class="breadcrumb-divider">/</span> <strong>Maandoverzicht</strong></span><span class="private-badge"><span></span> Privé op dit apparaat</span></header>
+    <main>
+      <section class="page-heading">
+        <div><div class="eyebrow">MINDER REKENEN. MEER OVERZICHT.</div><h1>Jouw sales in beeld<span>.</span></h1><p>Vul je sales in en zie meteen wat je deze maand verdient.</p></div>
+        <label class="month-picker"><span aria-hidden="true">▦</span><span class="sr-only">Kies een maand</span><input type="month" id="month" required></label>
+      </section>
+
+      <section class="stats" aria-label="Maandtotalen">
+        <article class="stat-card"><div class="stat-label">Totaal aantal sales <span class="stat-icon" aria-hidden="true">↗</span></div><div class="stat-value" id="total-sales">0</div><div class="stat-foot">Verkochte abonnementen deze maand</div></article>
+        <article class="stat-card"><div class="stat-label">Totale vergoeding <span class="stat-icon" aria-hidden="true">€</span></div><div class="stat-value" id="gross">€ 0,00</div><div class="stat-foot">Vóór aftrek van je licentiekosten</div></article>
+        <article class="stat-card payout-card"><div class="stat-label">Jouw verdiensten <span class="stat-icon" aria-hidden="true">↗</span></div><div class="stat-value" id="payout">−€ 70,00</div><div class="stat-foot"><span class="included-check">✓</span> Inclusief € 70,00 licentieaftrek</div></article>
+      </section>
+
+      <div class="content-grid">
+        <section class="sales-panel panel">
+          <div class="panel-heading"><div><h2>Voer je sales in</h2><p>Een kleine update. Direct inzicht.</p></div><span class="live-label"><span></span> Live berekend</span></div>
+          <div class="provider-heading"><span class="provider-logo ziggo-logo">ziggo</span><span class="provider-description">Internet & televisie</span></div>
+          <div class="table-header"><span>ABONNEMENT</span><span>PER SALE</span><span>AANTAL</span><span>TOTAAL</span></div>
+          <div id="ziggo-rows"></div>
+          <div class="provider-heading vodafone-heading"><span class="vodafone-logo"><span class="vodafone-symbol" aria-hidden="true">◕</span> vodafone</span><span class="provider-description">Mobiele abonnementen</span></div>
+          <div class="table-header"><span>ABONNEMENT</span><span>PER SALE</span><span>AANTAL</span><span>TOTAAL</span></div>
+          <div id="vodafone-rows"></div>
+          <div class="panel-footer"><span id="save-status" role="status">Wijzigingen worden automatisch bewaard</span><button id="reset" type="button">Maand wissen <span aria-hidden="true">↺</span></button></div>
+        </section>
+
+        <aside class="summary-column">
+          <section class="panel summary-panel"><div class="summary-heading"><h2>Jouw maandoverzicht</h2><span id="summary-month"></span></div>
+            <div class="summary-line"><span><i class="provider-dot orange"></i>Ziggo</span><strong id="ziggo-total">€ 0,00</strong></div>
+            <div class="summary-line"><span><i class="provider-dot red"></i>Vodafone</span><strong id="vodafone-total">€ 0,00</strong></div>
+            <div class="summary-line subtotal"><span>Totale vergoeding</span><strong id="summary-gross">€ 0,00</strong></div>
+            <div class="summary-line license-line"><span>Licentiekosten <span title="Deze vaste kosten worden iedere maand één keer afgetrokken." aria-label="Vaste maandelijkse kosten">ⓘ</span></span><strong>− € 70,00</strong></div>
+            <div class="summary-payout" aria-live="polite" aria-atomic="true"><span>Te ontvangen</span><strong id="summary-payout">−€ 70,00</strong></div>
+            <p class="summary-disclaimer">Je vergoeding na licentiekosten, vóór eventuele belastingen en overige inhoudingen.</p>
+          </section>
+          <section class="tip-card"><span class="tip-icon" aria-hidden="true">✧</span><h3>Elke sale maakt het verschil</h3><p id="tip-text">Met één Ziggo-abonnement van 2 jaar heb je je maandelijkse licentiekosten al terugverdiend.</p><div class="tip-divider"></div><span>Jij verkoopt. Wij rekenen.</span><span class="tip-arrow" aria-hidden="true">↗</span></section>
+        </aside>
+      </div>
+      <footer class="page-footer"><span><span aria-hidden="true">⌁</span> Jouw overzicht, zonder rekenwerk.</span><span>Alle bedragen in euro’s</span></footer>
+    </main>
+  </div>
+  <dialog id="reset-dialog"><form method="dialog"><h2>Deze maand wissen?</h2><p>Alle aantallen voor <strong id="reset-month"></strong> worden teruggezet naar nul.</p><div class="dialog-actions"><button value="cancel">Annuleren</button><button value="confirm" class="confirm-button">Ja, maand wissen</button></div></form></dialog>
+</body>
+</html>
